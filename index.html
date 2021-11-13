@@ -1,12 +1,26 @@
 <!doctype html>
 <html>
   <head>
-    <title>Record Audio Test</title>
+  	<script src="https://skynet-js.hns.siasky.net/4.0-beta/index.js"></script>
+    <title>🎤 Audio Recorder</title>
   </head>
   <body>
-    <h1>Audio Recording Test</h1>
-    <p>Talk for 3 seconds, then you will hear your recording played back</p>
     <script src="index.js"></script>
-    <button id="action" onclick="handleAction()">Start recording...</button>
+    <div style="padding-bottom: 5%" id="empty"></div>
+    <div style="margin: 0 auto; border: 5px; border-style: double; border-color: red; width:30%; padding: 25px">
+    		<h2 style="text-align: center">Record audio</h2>
+	    <div id="recorder" style="padding: 15px; display: flex; justify-content: center;">
+	    	<button style="width:35%; margin: 0 auto" id="action" onclick="handleAction()">🎤 Start recording...</button>
+		    <button style="width:35%; margin: 0 auto" id="stop" onclick="stopRecording()">🛑 Stop recording ...</button>
+	    </div>
+	    	<h2 style="text-align: center">Load & play-back audio</h2>
+	    <div id="loader" style="padding: 15px; display: flex; justify-content: center;">
+		   	<button style="width:35%; margin: 0 auto" id="load" onclick="load()">⌛ Load Audio from Skylink...</button>
+		   	<input style="width:35%; margin: 0 auto" type="text" id="audiolink" name="audiolink" placeholder="Enter Skylink...">
+	    </div>
+	    	<h2 style="text-align: center" >Generated Audio URLs</h2>
+	    <div id="skylinks" style="padding: 15px; display: flex; justify-content: center;">
+	    </div>
+	</div>
   </body>
 </html>
