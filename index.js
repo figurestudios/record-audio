@@ -1,3 +1,7 @@
+const client = new skynet.SkynetClient("https://siasky.net");
+
+let recording;
+
 const recordAudio = () =>
   new Promise(async resolve => {
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -8,7 +12,10 @@ const recordAudio = () =>
       audioChunks.push(event.data);
     });
 
-    const start = () => mediaRecorder.start();
+    const start = () => {
+      recording = true;
+      mediaRecorder.start();
+    }
 
     const stop = () =>
       new Promise(resolve => {
@@ -33,9 +40,53 @@ const handleAction = async () => {
   const actionButton = document.getElementById("action");
   actionButton.disabled = true;
   recorder.start();
-  await sleep(3000);
-  const audio = await recorder.stop();
-  audio.play();
-  await sleep(3000);
-  actionButton.disabled = false;
+  let loop = window.setInterval(async function() {
+    if (!recording) {
+      clearInterval(loop);
+      const audio = await recorder.stop();
+      audio.play();
+      const reader = new FileReader();
+      reader.readAsDataURL(audio.audioBlob);
+      reader.onload = async () => {
+        const base64AudioMessage = reader.result/*.split(',')[1]*/;
+        upload(base64AudioMessage);
+      }
+      await sleep(1000);
+      actionButton.disabled = false;
+    } else {
+      console.log("recording audio ...");
+    }
+  }, 500);
 };
+
+const stopRecording = () => recording = false;
+
+const upload = async (base64AudioMessage) => {
+  console.log("uploading audio ...");
+  try {
+    var file = new File([base64AudioMessage], "audio", {
+      type: "audio/mpeg",
+    });
+    const { skylink } = await client.uploadFile(file);
+    var paragraph = document.createElement("p");
+    client.getSkylinkUrl(skylink).then(skylinkUrl => paragraph.innerText = skylinkUrl)
+    document.getElementById("skylinks").append(paragraph)
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const listen = async (skylink) => {
+  await fetch(skylink+'/audio')
+  .then(response => response.text())
+  .then(data => audio = data);
+
+  var audioObject = document.createElement("AUDIO");
+  audioObject.src = audio;
+  audioObject.play();
+}
+
+const load = () => {
+  skylink = document.getElementById("audiolink").value;
+  listen(skylink);
+}
