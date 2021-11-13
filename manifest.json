@@ -1,0 +1,28 @@
+{
+  "background_color": "#fff",
+  "display": "standalone",
+  "homepage_url": "https://github.com/figurestudios/record-audio",
+  "providedBy": { "name": "stelballe", "url": "https://github.com/figurestudios/record-audio" },
+  "icons": [
+    {
+      "src": "./192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "orientation": "portrait",
+  "name": "🎤 Audio Recorder",
+  "description": "Record and play audio files",
+  "iconPath": "./256x256.png",
+  "short_name": "Audio",
+  "start_url": ".",
+  "theme_color": "#00c65e",
+  "skylink": "AQDxen0EsgB6iEmWDifu5bupr9j98VESiLxvkPUqaQ7HbA"
+}
