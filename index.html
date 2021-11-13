@@ -2,7 +2,8 @@
 <html>
   <head>
   	<script src="https://skynet-js.hns.siasky.net/4.0-beta/index.js"></script>
-    <title>🎤 Audio Recorder</title>
+    <title>Audio Recorder</title>
+	<link rel="manifest" href="./manifest.json"/>
   </head>
   <body>
     <script src="index.js"></script>
@@ -10,12 +11,12 @@
     <div style="margin: 0 auto; border: 5px; border-style: double; border-color: red; width:30%; padding: 25px">
     		<h2 style="text-align: center">Record audio</h2>
 	    <div id="recorder" style="padding: 15px; display: flex; justify-content: center;">
-	    	<button style="width:35%; margin: 0 auto" id="action" onclick="handleAction()">🎤 Start recording...</button>
-		    <button style="width:35%; margin: 0 auto" id="stop" onclick="stopRecording()">🛑 Stop recording ...</button>
+	    	<button style="width:35%; margin: 0 auto" id="action" onclick="handleAction()">Start recording...</button>
+		    <button style="width:35%; margin: 0 auto" id="stop" onclick="stopRecording()">Stop recording ...</button>
 	    </div>
 	    	<h2 style="text-align: center">Load & play-back audio</h2>
 	    <div id="loader" style="padding: 15px; display: flex; justify-content: center;">
-		   	<button style="width:35%; margin: 0 auto" id="load" onclick="load()">⌛ Load Audio from Skylink...</button>
+		   	<button style="width:35%; margin: 0 auto" id="load" onclick="load()">Load Audio from Skylink...</button>
 		   	<input style="width:35%; margin: 0 auto" type="text" id="audiolink" name="audiolink" placeholder="Enter Skylink...">
 	    </div>
 	    	<h2 style="text-align: center" >Generated Audio URLs</h2>
