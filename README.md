@@ -1,23 +1,7 @@
-# Record Audio
+# Record Audio (Skynet edition)
 
-A simple audio recording function.
+A fork of the simple audio recording example made by bryanjenningz.
 
-### How to use
+### How to use:
 
-The following code will record audio for 3 seconds, then play back the audio that it recorded.
-
-```javascript
-(async () => {
-  const recorder = await recordAudio();
-  recorder.start();
-  await sleep(3000);
-  const audio = await recorder.stop();
-  audio.play();
-})();
-```
-
-### Instructions for running example
-
-Make sure your browser is up to date.
-
-Clone the repo, then open index.html, then press action button and start talking. You will be recorded for 3 seconds, then your recording will be played back.
+[![Add to Homescreen](https://img.shields.io/badge/Skynet-Add%20To%20Homescreen-00c65e?logo=skynet&labelColor=0d0d0d)](https://homescreen.hns.siasky.net/#/skylink/[sia://AQDxen0EsgB6iEmWDifu5bupr9j98VESiLxvkPUqaQ7HbA])
